@@ -34,8 +34,10 @@ import Layout from "../../layouts/Layout.astro";
           <p>型安全性を提供し、開発効率とコードの品質を向上。</p>
         </div>
         <div class="tech-item">
-          <h3>Prettier</h3>
-          <p>コードフォーマッターとして使用。一貫したコードスタイルを維持。</p>
+          <h3>SSGForm</h3>
+          <p>
+            お問い合わせフォームの送信処理を担当。静的サイトでも安全にフォーム機能を実現。
+          </p>
         </div>
       </div>
     </section>
@@ -58,6 +60,12 @@ import Layout from "../../layouts/Layout.astro";
           <p>モバイル・タブレット・デスクトップに対応したデザイン。</p>
         </li>
         <li>
+          <strong>お問い合わせフォーム</strong>
+          <p>
+            SSGFormを使用した安全なお問い合わせ機能。お客様からのご連絡を確実に受信。
+          </p>
+        </li>
+        <li>
           <strong>SEO最適化</strong>
           <p>静的サイトの特性を活かし、検索エンジン最適化を実現。</p>
         </li>
@@ -74,6 +82,9 @@ import Layout from "../../layouts/Layout.astro";
             <strong>ブログ一覧</strong> - microCMSから取得したブログ記事の一覧表示
           </li>
           <li><strong>ブログ詳細</strong> - 個別ブログ記事の詳細表示</li>
+          <li>
+            <strong>お問い合わせ</strong> - SSGFormを使用したお問い合わせフォーム
+          </li>
           <li><strong>このサイトについて</strong> - サイトの技術情報と構成</li>
         </ul>
 
@@ -83,6 +94,7 @@ import Layout from "../../layouts/Layout.astro";
           <li>型安全なTypeScript開発</li>
           <li>API経由でのコンテンツ取得</li>
           <li>静的サイト生成による高速化</li>
+          <li>SSGFormによる安全なフォーム処理</li>
         </ul>
       </div>
     </section>
@@ -91,7 +103,11 @@ import Layout from "../../layouts/Layout.astro";
       <h2>お問い合わせ</h2>
       <p>
         このサイトに関するご質問やご意見がございましたら、
-        お気軽にお問い合わせください。
+        お気軽にお問い合わせください。SSGFormを使用した安全なフォームから
+        お送りいただけます。
+      </p>
+      <p>
+        <a href="/contact" class="contact-link">お問い合わせフォームへ</a>
       </p>
     </section>
   </div>
@@ -227,5 +243,21 @@ import Layout from "../../layouts/Layout.astro";
   .contact p {
     color: #666;
     font-size: 1.1rem;
+  }
+
+  .contact-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #007acc;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+
+  .contact-link:hover {
+    background-color: #005a9e;
   }
 </style>
