@@ -1,0 +1,347 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="お問い合わせ">
+  <div class="contact-container">
+    <header class="page-header">
+      <h1 class="page-title">お問い合わせ</h1>
+      <p class="page-description">
+        ご質問やご相談がございましたら、お気軽にお問い合わせください。
+        お返事までに1-2営業日いただく場合がございます。
+      </p>
+    </header>
+
+    <div class="contact-content">
+      <div class="contact-info">
+        <h2>お問い合わせ方法</h2>
+        <div class="info-cards">
+          <div class="info-card">
+            <h3>メールフォーム</h3>
+            <p>
+              下記のフォームからお問い合わせいただけます。24時間受付中です。
+            </p>
+          </div>
+          <div class="info-card">
+            <h3>回答時間</h3>
+            <p>平日1-2営業日以内にご回答いたします。</p>
+          </div>
+          <div class="info-card">
+            <h3>プライバシー</h3>
+            <p>
+              お客様の個人情報は適切に管理し、第三者に提供することはありません。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-section">
+        <h2>お問い合わせフォーム</h2>
+        <form
+          action="https://api.ssgform.com/submit/your-form-id"
+          method="POST"
+          class="contact-form"
+          id="contact-form"
+        >
+          <div class="form-group">
+            <label for="name" class="form-label"
+              >お名前 <span class="required">*</span></label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input"
+              required
+              placeholder="山田太郎"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label"
+              >メールアドレス <span class="required">*</span></label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              required
+              placeholder="example@email.com"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="form-label"
+              >件名 <span class="required">*</span></label
+            >
+            <select id="subject" name="subject" class="form-select" required>
+              <option value="">選択してください</option>
+              <option value="general">一般的なお問い合わせ</option>
+              <option value="technical">技術的な質問</option>
+              <option value="bug">バグ報告</option>
+              <option value="feature">機能要望</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label"
+              >メッセージ <span class="required">*</span></label
+            >
+            <textarea
+              id="message"
+              name="message"
+              class="form-textarea"
+              required
+              rows="6"
+              placeholder="お問い合わせ内容をご記入ください"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="privacy" required />
+              <span class="checkbox-text">
+                <a href="/privacy" target="_blank">プライバシーポリシー</a
+                >に同意します <span class="required">*</span>
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" class="submit-button"> 送信する </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .contact-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 3rem 0;
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 2rem;
+    border: 1px solid #eee;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .page-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #666;
+  }
+
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .contact-info h2,
+  .contact-form-section h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #007acc;
+    padding-bottom: 0.5rem;
+  }
+
+  .info-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .info-card {
+    padding: 1.5rem;
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .info-card:hover {
+    border-color: #007acc;
+    box-shadow: 0 2px 8px rgba(0, 122, 204, 0.1);
+  }
+
+  .info-card h3 {
+    color: #007acc;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .info-card p {
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .contact-form {
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #eee;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .required {
+    color: #e74c3c;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: #007acc;
+    box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.1);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .checkbox-label input[type="checkbox"] {
+    margin: 0;
+    width: auto;
+  }
+
+  .checkbox-text {
+    color: #666;
+    line-height: 1.5;
+  }
+
+  .checkbox-text a {
+    color: #007acc;
+    text-decoration: none;
+  }
+
+  .checkbox-text a:hover {
+    text-decoration: underline;
+  }
+
+  .submit-button {
+    background: #007acc;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+  }
+
+  .submit-button:hover {
+    background: #005a9e;
+  }
+
+  .submit-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+
+  /* レスポンシブデザイン */
+  @media (max-width: 768px) {
+    .contact-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .page-description {
+      font-size: 1rem;
+    }
+
+    .contact-form {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-container {
+      padding: 0 0.5rem;
+    }
+
+    .page-header {
+      padding: 2rem 1rem;
+      margin-top: 1rem;
+    }
+
+    .page-title {
+      font-size: 1.75rem;
+    }
+
+    .contact-form {
+      padding: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // フォーム送信の処理
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+    const submitButton = form.querySelector(".submit-button");
+
+    form.addEventListener("submit", function (e) {
+      // 送信ボタンを無効化
+      submitButton.disabled = true;
+      submitButton.textContent = "送信中...";
+
+      // 実際の送信はSSGFormが処理
+      // 成功時の処理はSSGFormの設定で行う
+    });
+  });
+</script>

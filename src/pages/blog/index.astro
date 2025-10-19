@@ -34,7 +34,7 @@ try {
         <div class="blog-list">
           {response.contents.map(content => (
             <article class="blog-item">
-              <a href={`/${content.id}`} class="blog-link">
+              <a href={`/blog/${content.id}`} class="blog-link">
                 <h2 class="blog-title">{content.title}</h2>
                 <div class="blog-meta">
                   <time class="published-date">

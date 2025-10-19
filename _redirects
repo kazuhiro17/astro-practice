@@ -2,5 +2,9 @@
 # SPAのフォールバック（必要に応じて）
 # /*    /index.html   200
 
+# ブログ詳細ページのリダイレクト（旧URLから新URLへ）
+# 旧: /[blogid] → 新: /blog/[blogid]
+# 動的リダイレクトはCloudflare Pagesの設定で行う
+
 # カスタムリダイレクトの例
 # /old-page    /new-page    301
