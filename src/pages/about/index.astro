@@ -1,0 +1,231 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="このサイトについて">
+  <div class="about-content">
+    <h1>このサイトについて</h1>
+
+    <section class="site-overview">
+      <h2>サイト概要</h2>
+      <p>
+        このサイトは、モダンなWebフレームワーク「Astro」を使用して構築された静的サイトです。
+        Astroの特徴を活かし、高速で軽量なWebサイトを実現しています。
+      </p>
+    </section>
+
+    <section class="technology">
+      <h2>使用技術</h2>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <h3>Astro</h3>
+          <p>
+            静的サイトジェネレーターとして使用。コンポーネントベースの開発と優れたパフォーマンスを提供。
+          </p>
+        </div>
+        <div class="tech-item">
+          <h3>microCMS</h3>
+          <p>
+            ヘッドレスCMSとしてブログコンテンツを管理。API経由でコンテンツを取得し、静的サイトに統合。
+          </p>
+        </div>
+        <div class="tech-item">
+          <h3>TypeScript</h3>
+          <p>型安全性を提供し、開発効率とコードの品質を向上。</p>
+        </div>
+        <div class="tech-item">
+          <h3>Prettier</h3>
+          <p>コードフォーマッターとして使用。一貫したコードスタイルを維持。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <h2>主な機能</h2>
+      <ul class="feature-list">
+        <li>
+          <strong>ブログシステム</strong>
+          <p>
+            microCMSと連携したブログ機能。記事の作成・編集・公開をCMSで管理。
+          </p>
+        </li>
+        <li>
+          <strong>静的サイト生成</strong>
+          <p>ビルド時にHTMLを生成し、高速なページ表示を実現。</p>
+        </li>
+        <li>
+          <strong>レスポンシブデザイン</strong>
+          <p>モバイル・タブレット・デスクトップに対応したデザイン。</p>
+        </li>
+        <li>
+          <strong>SEO最適化</strong>
+          <p>静的サイトの特性を活かし、検索エンジン最適化を実現。</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="architecture">
+      <h2>サイト構成</h2>
+      <div class="architecture-info">
+        <h3>ページ構成</h3>
+        <ul>
+          <li><strong>トップページ</strong> - サイトの概要と主要機能の紹介</li>
+          <li>
+            <strong>ブログ一覧</strong> - microCMSから取得したブログ記事の一覧表示
+          </li>
+          <li><strong>ブログ詳細</strong> - 個別ブログ記事の詳細表示</li>
+          <li><strong>このサイトについて</strong> - サイトの技術情報と構成</li>
+        </ul>
+
+        <h3>技術的特徴</h3>
+        <ul>
+          <li>コンポーネントベースの開発</li>
+          <li>型安全なTypeScript開発</li>
+          <li>API経由でのコンテンツ取得</li>
+          <li>静的サイト生成による高速化</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>お問い合わせ</h2>
+      <p>
+        このサイトに関するご質問やご意見がございましたら、
+        お気軽にお問い合わせください。
+      </p>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    line-height: 1.7;
+  }
+
+  .about-content h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .about-content h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #007acc;
+    padding-bottom: 0.5rem;
+  }
+
+  .about-content h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+
+  .site-overview p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .tech-item {
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: all 0.2s ease;
+  }
+
+  .tech-item:hover {
+    border-color: #007acc;
+    box-shadow: 0 2px 8px rgba(0, 122, 204, 0.1);
+  }
+
+  .tech-item h3 {
+    color: #007acc;
+    margin-bottom: 0.5rem;
+  }
+
+  .tech-item p {
+    color: #666;
+    margin: 0;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-list li {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-left: 4px solid #007acc;
+    background-color: #f9f9f9;
+  }
+
+  .feature-list strong {
+    color: #333;
+    font-size: 1.1rem;
+  }
+
+  .feature-list p {
+    margin: 0.5rem 0 0 0;
+    color: #666;
+  }
+
+  .architecture-info {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+  }
+
+  .architecture-info h3 {
+    color: #007acc;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .architecture-info h3:first-child {
+    margin-top: 0;
+  }
+
+  .architecture-info ul {
+    margin-bottom: 1.5rem;
+  }
+
+  .architecture-info li {
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+
+  .contact {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+  }
+
+  .contact h2 {
+    border-bottom: none;
+    margin-top: 0;
+  }
+
+  .contact p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+</style>

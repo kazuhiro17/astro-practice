@@ -1,0 +1,258 @@
+---
+// 現在のページを取得するためのロジック
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="navbar">
+  <div class="nav-container">
+    <!-- ロゴ/ブランド -->
+    <div class="nav-brand">
+      <a href="/" class="brand-link">
+        <span class="brand-text">AstroSite</span>
+      </a>
+    </div>
+
+    <!-- デスクトップナビゲーション -->
+    <div class="nav-menu" id="nav-menu">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="/" class={`nav-link ${currentPath === "/" ? "active" : ""}`}>
+            ホーム
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="/about"
+            class={`nav-link ${currentPath.startsWith("/about") ? "active" : ""}`}
+          >
+            このサイトについて
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="/blog"
+            class={`nav-link ${currentPath.startsWith("/blog") ? "active" : ""}`}
+          >
+            ブログ一覧
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- モバイルメニューボタン -->
+    <div class="nav-toggle" id="nav-toggle">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+
+  /* ブランド */
+  .nav-brand {
+    flex-shrink: 0;
+  }
+
+  .brand-link {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 1.25rem;
+    transition: color 0.2s ease;
+  }
+
+  .brand-link:hover {
+    color: #007acc;
+  }
+
+  .brand-text {
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+
+  /* ナビゲーションメニュー */
+  .nav-menu {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.5rem;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: #007acc;
+  }
+
+  .nav-link.active {
+    color: #007acc;
+    font-weight: 600;
+  }
+
+  /* モバイルメニューボタン */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .hamburger-line {
+    width: 25px;
+    height: 2px;
+    background: #333;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+  }
+
+  /* レスポンシブデザイン */
+  @media (max-width: 768px) {
+    .nav-container {
+      padding: 0 1rem;
+    }
+
+    .nav-menu {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-list {
+      flex-direction: column;
+      padding: 1rem 0;
+      gap: 0;
+    }
+
+    .nav-link {
+      padding: 1rem 2rem;
+      border-radius: 0;
+      justify-content: flex-start;
+      color: #666;
+    }
+
+    .nav-link:hover {
+      background: rgba(0, 122, 204, 0.05);
+      color: #007acc;
+    }
+
+    .nav-toggle {
+      display: flex;
+    }
+
+    .brand-text {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-container {
+      padding: 0 0.75rem;
+    }
+
+    .brand-link {
+      font-size: 1.25rem;
+    }
+  }
+</style>
+
+<script>
+  // モバイルメニューのトグル機能
+  document.addEventListener("DOMContentLoaded", () => {
+    const navToggle = document.getElementById("nav-toggle");
+    const navMenu = document.getElementById("nav-menu");
+
+    if (navToggle && navMenu) {
+      navToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+
+        // ハンバーガーメニューのアニメーション
+        const lines = navToggle.querySelectorAll(".hamburger-line");
+        navToggle.classList.toggle("active");
+
+        if (navToggle.classList.contains("active")) {
+          lines[0].style.transform = "rotate(45deg) translate(5px, 5px)";
+          lines[1].style.opacity = "0";
+          lines[2].style.transform = "rotate(-45deg) translate(7px, -6px)";
+        } else {
+          lines[0].style.transform = "none";
+          lines[1].style.opacity = "1";
+          lines[2].style.transform = "none";
+        }
+      });
+
+      // メニューリンクをクリックした時にメニューを閉じる
+      const navLinks = navMenu.querySelectorAll(".nav-link");
+      navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("active");
+          navToggle.classList.remove("active");
+
+          const lines = navToggle.querySelectorAll(".hamburger-line");
+          lines[0].style.transform = "none";
+          lines[1].style.opacity = "1";
+          lines[2].style.transform = "none";
+        });
+      });
+    }
+  });
+</script>
