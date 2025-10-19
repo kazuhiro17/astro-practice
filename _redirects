@@ -1,0 +1,6 @@
+# Cloudflare Pages用のリダイレクト設定
+# SPAのフォールバック（必要に応じて）
+# /*    /index.html   200
+
+# カスタムリダイレクトの例
+# /old-page    /new-page    301

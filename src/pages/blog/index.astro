@@ -8,8 +8,8 @@ let error = null;
 try {
   response = await getBlogs({ fields: ["id", "title", "publishedAt"] });
 } catch (err) {
-  error = err;
-  console.error("microCMS API Error:", err);
+  error = "ブログ記事の取得に失敗しました。";
+  console.error("microCMS API Error: Failed to fetch blog posts");
 }
 ---
 
