@@ -1,5 +1,16 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+
+// URLパラメータから送信成功を判定
+const url = new URL(Astro.request.url);
+const isSuccess = url.searchParams.get("success") === "true";
+
+// SSGFormのaction URLを環境変数から取得
+const ssgformFormId = import.meta.env.SSGFORM_FORM_ID;
+if (!ssgformFormId) {
+  throw new Error("SSGFORM_FORM_ID environment variable is not set");
+}
+const ssgformActionUrl = `https://ssgform.com/s/${ssgformFormId}`;
 ---
 
 <Layout title="お問い合わせ">
@@ -11,6 +22,18 @@ import Layout from "../../layouts/Layout.astro";
         お返事までに1-2営業日いただく場合がございます。
       </p>
     </header>
+
+    <!-- 送信成功メッセージ -->
+    {
+      isSuccess && (
+        <div class="success-message">
+          <h2>お問い合わせありがとうございます</h2>
+          <p>
+            メッセージを正常に送信いたしました。1-2営業日以内にご回答いたします。
+          </p>
+        </div>
+      )
+    }
 
     <div class="contact-content">
       <div class="contact-info">
@@ -38,11 +61,14 @@ import Layout from "../../layouts/Layout.astro";
       <div class="contact-form-section">
         <h2>お問い合わせフォーム</h2>
         <form
-          action="https://api.ssgform.com/submit/your-form-id"
+          action={ssgformActionUrl}
           method="POST"
           class="contact-form"
           id="contact-form"
         >
+          <!-- SSGForm用のリダイレクト設定 -->
+          <input type="hidden" name="_redirect" value="/contact?success=true" />
+
           <div class="form-group">
             <label for="name" class="form-label"
               >お名前 <span class="required">*</span></label
@@ -145,6 +171,27 @@ import Layout from "../../layouts/Layout.astro";
     max-width: 600px;
     margin: 0 auto;
     color: #666;
+  }
+
+  .success-message {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .success-message h2 {
+    color: #155724;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .success-message p {
+    margin: 0;
+    font-size: 1.1rem;
   }
 
   .contact-content {
